@@ -77,19 +77,30 @@ class GeulaGame {
         const musicBtn = document.getElementById('music-toggle');
         const music = document.getElementById('background-music');
         
-        musicBtn.addEventListener('click', () => {
-            if (music.paused) {
-                musicBtn.textContent = '⌛';
-                music.play().then(() => {
+        music.addEventListener('loadeddata', () => {
+            console.log('המוזיקה נטענה בהצלחה');
+            musicBtn.style.opacity = '1';
+        });
+
+        music.addEventListener('error', (e) => {
+            console.error('שגיאה בטעינת המוזיקה:', e);
+            musicBtn.style.opacity = '0.5';
+        });
+        
+        musicBtn.addEventListener('click', async () => {
+            try {
+                if (music.paused) {
+                    musicBtn.textContent = '⌛';
+                    await music.play();
                     musicBtn.textContent = '🔊';
-                }).catch(err => {
-                    console.log('Error playing music:', err);
+                } else {
+                    music.pause();
                     musicBtn.textContent = '🔈';
-                    alert('לא ניתן להפעיל את המוזיקה. נסו שוב.');
-                });
-            } else {
-                music.pause();
+                }
+            } catch (err) {
+                console.error('שגיאה בהפעלת המוזיקה:', err);
                 musicBtn.textContent = '🔈';
+                alert('לא ניתן להפעיל את המוזיקה. נסו שוב.');
             }
         });
     }
