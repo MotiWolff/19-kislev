@@ -79,8 +79,14 @@ class GeulaGame {
         
         musicBtn.addEventListener('click', () => {
             if (music.paused) {
-                music.play();
-                musicBtn.textContent = '🔊';
+                musicBtn.textContent = '⌛';
+                music.play().then(() => {
+                    musicBtn.textContent = '🔊';
+                }).catch(err => {
+                    console.log('Error playing music:', err);
+                    musicBtn.textContent = '🔈';
+                    alert('לא ניתן להפעיל את המוזיקה. נסו שוב.');
+                });
             } else {
                 music.pause();
                 musicBtn.textContent = '🔈';
