@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מסע הגאולה - י״ט כסלו</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="game-container">
+        <div class="header">
+            <img src="admur.png" alt="כתר" class="crown-icon">
+            <h1>✨ מסע הגאולה ✨</h1>
+            <h2>משחק לכבוד י״ט כסלו</h2>
+        </div>
+
+        <div class="instructions">
+            <h3>🎮 איך משחקים?</h3>
+            <p>לחצו על המספרים בלוח כדי לקבל משימות מיוחדות הקשורות לחג הגאולה</p>
+        </div>
+
+        <button id="music-toggle" class="music-button">🔊</button>
+        <audio id="background-music" loop>
+            <source src="nigun.mp3" type="audio/mp3">
+        </audio>
+        
+        <div class="board"></div>
+
+        <footer>
+            <p>נוצר באהבה לכבוד י״ט כסלו</p>
+        </footer>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html> 
